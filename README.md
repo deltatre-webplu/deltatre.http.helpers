@@ -115,3 +115,15 @@ catch (OperationCanceledException exception)
 	// handle GET request cancellation here
 }
 ```
+
+**IMPORTANT NOTE**: when a `CancellationToken` is provided to the `GetJsonAsync` extension method and cancellation is requested
+by the cancellation token source owner, we do **not** raise the custom `HttpRequestTimeoutException` exception.
+The `HttpRequestTimeoutException` is raised only when the HTTP request times out because the invoked web service is slow. 
+In order to set the timeout of the `HttpClient` instance the [`HttpClient.Timeout` property](https://docs.microsoft.com/en-us/dotnet/api/system.net.http.httpclient.timeout?view=netcore-3.1) must be used.
+
+### Customize JSON deserialization process
+The `GetJsonAsync` extension method allows the caller to customize the JSON deserialization by providing an instance
+of the [JsonSerializerSettings class](https://www.newtonsoft.com/json/help/html/T_Newtonsoft_Json_JsonSerializerSettings.htm).
+
+You can refer to the [Newtonsoft.Json documentation](https://www.newtonsoft.com/json/help/html/Introduction.htm) to get more information about how to customize
+the serialization and deserialization process.
