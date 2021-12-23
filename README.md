@@ -122,7 +122,7 @@ catch (OperationCanceledException exception)
 
 **IMPORTANT NOTE**: when a `CancellationToken` is provided to the `GetJsonAsync` extension method and cancellation is requested
 by the cancellation token source owner, we do **not** raise the custom `HttpRequestTimeoutException` exception.
-The `HttpRequestTimeoutException` is raised only when the HTTP request times out because the invoked web service is slow. 
+The `HttpRequestTimeoutException` is raised **only when** the HTTP request times out, because the invoked web service is slow. 
 In order to set the timeout of the `HttpClient` instance the [`HttpClient.Timeout` property](https://docs.microsoft.com/en-us/dotnet/api/system.net.http.httpclient.timeout?view=netcore-3.1) must be used.
 
 ### Customize JSON deserialization process
