@@ -42,8 +42,10 @@ foreach (var car in cars)
 ```
 
 ### Exception handling
-All the exceptions thrown by the library derives from the `JsonApiRequestException` base class. So if you don't need to differentiate 
-your exception handling strategy you can simply catch the `JsonApiRequestException` exception type: 
+All the exceptions thrown by the library derives from the `JsonApiRequestException` base class. So, if you don't need to differentiate 
+your exception handling strategy, you can simply catch the `JsonApiRequestException` exception type.
+
+Here is an example:
 
 ```C#
 try 
