@@ -21,23 +21,23 @@ var uri = new Uri("https://foo.example.net/api/cars");
 
 try 
 {
-	cars = await httpClient.GetJsonAsync<List<Car>>(uri).ConfigureAwait(false);
+  cars = await httpClient.GetJsonAsync<List<Car>>(uri).ConfigureAwait(false);
 }
 catch (JsonApiRequestException exception) 
 {
-	Console.Writeline("An error occurred while fetching cars: {0}", exception.Message);
-	return;
+  Console.Writeline("An error occurred while fetching cars: {0}", exception.Message);
+  return;
 }
 
 if (cars is null) 
 {
-	Console.Writeline("No cars data available");
-	return;
+  Console.Writeline("No cars data available");
+  return;
 }
 
 foreach (var car in cars) 
 {
-	Console.Writeline("Car model: {0} - Year: {1} - Owner: {2}", car.Model, car.Year, car.Owner);
+  Console.Writeline("Car model: {0} - Year: {1} - Owner: {2}", car.Model, car.Year, car.Owner);
 }
 ```
 
@@ -48,12 +48,12 @@ your exception handling strategy you can simply catch the `JsonApiRequestExcepti
 ```C#
 try 
 {
-	cars = await httpClient.GetJsonAsync<List<Car>>(uri).ConfigureAwait(false);
+  cars = await httpClient.GetJsonAsync<List<Car>>(uri).ConfigureAwait(false);
 }
 catch (JsonApiRequestException exception) 
 {
-	Console.Writeline("An error occurred while fetching cars: {0}", exception.Message);
-	return;
+  Console.Writeline("An error occurred while fetching cars: {0}", exception.Message);
+  return;
 }
 ```
 
@@ -62,34 +62,34 @@ If need to, you can provide different exception handlers based on the specif typ
 ```C#
 try 
 {
-	cars = await httpClient.GetJsonAsync<List<Car>>(uri).ConfigureAwait(false);
+  cars = await httpClient.GetJsonAsync<List<Car>>(uri).ConfigureAwait(false);
 }
 catch (HttpInfrastructureException exception) 
 {
-	// handle infrastructure-level errors such as missing network connectivity or DNS-level failures
+  // handle infrastructure-level errors such as missing network connectivity or DNS-level failures
 }
 catch (HttpRequestTimeoutException exception) 
 {
-	// handle HTTP request timeout
+  // handle HTTP request timeout
 }
 catch (NonSuccessStatusCodeException exception) 
 {
-	// handle non success response status code.
-	// We consider all the status codes outside of the range between 200 and 299 as non success
+  // handle non success response status code.
+  // We consider all the status codes outside of the range between 200 and 299 as non success
 }
 catch (EmptyResponseBodyException exception) 
 {
-	// you get here if the called endpoint returns an empty response body
-	// we consider this an error because you are expecting a non-empty JSON response body instead
+  // you get here if the called endpoint returns an empty response body
+  // we consider this an error because you are expecting a non-empty JSON response body instead
 }
 catch (UnexpectedResponseMediaTypeException exception) 
 {
-	// you get here if the response media type is other than application/json
+  // you get here if the response media type is other than application/json
 }
 catch (JsonDeserializationException exception)
 {
-	// handle errors related with the deserialization of the JSON response content
-	// (e.g: the response content contains invalid JSON for any reason)
+  // handle errors related with the deserialization of the JSON response content
+  // (e.g: the response content contains invalid JSON for any reason)
 }
 ```
 
@@ -108,13 +108,13 @@ var token = source.Token;
 
 try 
 {
-	cars = await httpClient
-		.GetJsonAsync<List<Car>>(uri, cancellationToken: token)
-		.ConfigureAwait(false);
+  cars = await httpClient
+    .GetJsonAsync<List<Car>>(uri, cancellationToken: token)
+    .ConfigureAwait(false);
 }
 catch (OperationCanceledException exception) 
 {
-	// handle GET request cancellation here
+  // handle GET request cancellation here
 }
 ```
 
