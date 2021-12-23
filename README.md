@@ -98,15 +98,20 @@ The pattern is the usual cancellation pattern: you simply need to provide a `Can
 Here is a sample:
 
 ```
+using var source = new CancellationTokenSource();
+
+source.Cancel();
+
+var token = source.Token;
+
 try 
 {
 	cars = await httpClient
-		.GetJsonAsync<List<Car>>(uri)
+		.GetJsonAsync<List<Car>>(uri, cancellationToken: token)
 		.ConfigureAwait(false);
 }
-catch (JsonApiRequestException exception) 
+catch (OperationCanceledException exception) 
 {
-	Console.Writeline("An error occurred while fetching cars: {0}", exception.Message);
-	return;
+	// handle GET request cancellation here
 }
 ```
