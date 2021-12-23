@@ -1,5 +1,5 @@
 # HTTP helpers for .NET core applications
-This library contains a set of helpers to simplify working with JSON web apis from .NET core 3.1 applications. 
+This library contains a set of helpers to simplify working with JSON web apis from **.NET core 3.1 applications**.  
 To serialize and deserialize JSON we make use of the [Newtonsoft.Json NUGET package](https://www.nuget.org/packages/Newtonsoft.Json/). 
 Each provided helper is implemented as an extension method for the [HttpClient class](https://docs.microsoft.com/en-us/dotnet/api/system.net.http.httpclient?view=netcore-3.1).
 
