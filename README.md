@@ -59,7 +59,7 @@ catch (JsonApiRequestException exception)
 }
 ```
 
-If need to, you can provide different exception handlers based on the specif type of error:
+If you need to, you can provide different exception handlers based on the specif type of error:
 
 ```C#
 try 
