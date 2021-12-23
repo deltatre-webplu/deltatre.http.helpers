@@ -12,7 +12,7 @@ If you need to issue a GET request to a JSON web API, you can use the `GetJsonAs
 
 Here is a sample:
 
-```
+```C#
 using var httpClient = new HttpClient();
 
 List<Car>? cars = null;
@@ -45,7 +45,7 @@ foreach (var car in cars)
 All the exceptions thrown by the library derives from the `JsonApiRequestException` base class. So if you don't need to differentiate 
 your exception handling strategy you can simply catch the `JsonApiRequestException` exception type: 
 
-```
+```C#
 try 
 {
 	cars = await httpClient.GetJsonAsync<List<Car>>(uri).ConfigureAwait(false);
@@ -59,7 +59,7 @@ catch (JsonApiRequestException exception)
 
 If need to, you can provide different exception handlers based on the specif type of error:
 
-```
+```C#
 try 
 {
 	cars = await httpClient.GetJsonAsync<List<Car>>(uri).ConfigureAwait(false);
@@ -99,7 +99,7 @@ The pattern is the usual cancellation pattern: you simply need to provide a `Can
 
 Here is a sample:
 
-```
+```C#
 using var source = new CancellationTokenSource();
 
 source.Cancel();
