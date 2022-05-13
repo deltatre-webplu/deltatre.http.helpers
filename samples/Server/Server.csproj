@@ -5,6 +5,7 @@
 	<Nullable>enable</Nullable>
 	<AnalysisMode>AllEnabledByDefault</AnalysisMode>
 	<AnalysisLevel>latest</AnalysisLevel>
+	<IsPackable>false</IsPackable>
   </PropertyGroup>
 
   <ItemGroup>
